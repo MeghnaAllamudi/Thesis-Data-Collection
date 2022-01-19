@@ -17,7 +17,8 @@ const Channel = ({ user = null }) => {
   const inputRef = useRef();
   const bottomListRef = useRef();
 
-  const { uid, displayName, photoURL } = user;
+  const uid = user.uid;
+  const displayName = user.uid; 
 
   useEffect(() => {
     if (inputRef.current) {
@@ -38,9 +39,8 @@ const Channel = ({ user = null }) => {
       messagesRef.add({
         text: trimmedMessage,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        uid,
-        displayName,
-        photoURL,
+        uid: firebase.auth().currentUser.uid, 
+        displayName: firebase.auth().currentUser.uid
       });
       // Clear input field
       setNewMessage('');
@@ -55,11 +55,10 @@ const Channel = ({ user = null }) => {
         <div className="py-4 max-w-screen-lg mx-auto">
           <div className="border-b dark:border-gray-600 border-gray-200 py-8 mb-4">
             <div className="font-bold text-3xl text-center">
-              <p className="mb-1">Welcome to</p>
-              <p className="mb-3">React FireChat</p>
+              <p className="mb-3">Persuasion Data Collection Site</p>
             </div>
             <p className="text-gray-400 text-center">
-              This is the beginning of this chat.
+              Topic: Should we convert to online learning? 
             </p>
           </div>
           <ul>
@@ -105,8 +104,7 @@ const Channel = ({ user = null }) => {
 Channel.propTypes = {
   user: PropTypes.shape({
     uid: PropTypes.string,
-    displayName: PropTypes.string,
-    photoURL: PropTypes.string,
+    displayName: PropTypes.string
   }),
 };
 

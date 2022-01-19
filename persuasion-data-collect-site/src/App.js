@@ -8,6 +8,7 @@ import { useAuthState, useDarkMode } from './hooks';
 // Components
 import Channel from './components/Channel';
 import Loader from './components/Loader';
+import SignUp from './components/SignUp';
 
 firebase.initializeApp({
   apiKey: "AIzaSyDBdq3at9FMIUvTN9Y1U_yNUp9YDT8kwRI",
@@ -49,9 +50,9 @@ function App() {
   const { user, initializing } = useAuthState(firebase.auth());
   const [darkMode, setDarkMode] = useDarkMode();
 
-  const brandLogo = darkMode
-    ? `${process.env.PUBLIC_URL}/logo_white.svg`
-    : `${process.env.PUBLIC_URL}/logo.svg`;
+  // const brandLogo = darkMode
+  //   ? `${process.env.PUBLIC_URL}/logo_white.svg`
+  //   : `${process.env.PUBLIC_URL}/logo.svg`;
 
   const ThemeIcon = darkMode ? SunIcon : MoonIcon;
 
@@ -67,6 +68,7 @@ function App() {
       console.log(error.message);
     }
   };
+
 
   const signOut = async () => {
     try {
@@ -103,7 +105,7 @@ function App() {
                 clipRule="evenodd"
               />
             </svg>
-            React FireChat
+            Persuasion Data Collection Site
           </h2>
           <p className="mb-8 text-lg text-center">
             The easiest way to chat with people all around the world.
@@ -151,9 +153,6 @@ function App() {
         className="flex-shrink-0 flex items-center justify-between px-4 sm:px-8 shadow-md"
         style={{ height: 'var(--topbar-height)' }}
       >
-        <a href="https://alterclass.io/courses/react">
-          <img src={brandLogo} alt="AlterClass" width={150} />
-        </a>
         <div className="flex items-center">
           {user ? (
             <button

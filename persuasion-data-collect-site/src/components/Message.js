@@ -17,14 +17,13 @@ const formatDate = date => {
 const Message = ({
   createdAt = null,
   text = '',
-  displayName = '',
-  photoURL = '',
+  displayName = ''
 }) => {
   if (!text) return null;
 
   return (
     <div className="px-4 py-4 rounded-md hover:bg-gray-50 dark:hover:bg-coolDark-600 overflow-hidden flex items-start">
-      {photoURL ? (
+      {/* {photoURL ? (
         <img
           src={photoURL}
           alt="Avatar"
@@ -32,7 +31,7 @@ const Message = ({
           width={45}
           height={45}
         />
-      ) : null}
+      ) : null} */}
       <div>
         <div className="flex items-center mb-1">
           {displayName ? (
@@ -55,8 +54,7 @@ Message.propTypes = {
   createdAt: PropTypes.shape({
     seconds: PropTypes.number,
   }),
-  displayName: PropTypes.string,
-  photoURL: PropTypes.string,
+  displayName: PropTypes.string
 };
 
 export default Message;
