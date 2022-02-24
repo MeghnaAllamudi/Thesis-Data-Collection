@@ -40,15 +40,21 @@ const Channel = ({ user = null }) => {
         text: trimmedMessage,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         uid: firebase.auth().currentUser.uid, 
-        displayName: firebase.auth().currentUser.uid.slice(0, 6)
+        displayName: firebase.auth().currentUser.uid.slice(0,6)
       });
       // Clear input field
       setNewMessage('');
       // Scroll down to the bottom of the list
-      bottomListRef.current.scrollIntoView({ behavior: 'smooth' });
+      
+     bottomListRef.current.scrollIntoView({ behavior: 'smooth', block: "start" });
     }
   };
-
+//   const scrollToBottom = () => {
+//     bottomListRef.current.scrollIntoView({
+//     behavior: "smooth",
+//     block: "start",
+//     });
+// };
   return (
     <div className="flex flex-col h-full">
       <div className="overflow-auto h-full">
@@ -78,7 +84,7 @@ const Channel = ({ user = null }) => {
       <div className="mb-6 mx-4">
         <form
           onSubmit={handleOnSubmit}
-          className="flex flex-row bg-gray-200 dark:bg-coolDark-400 rounded-md px-4 py-3 z-10 max-w-screen-lg mx-auto dark:text-white shadow-md"
+          className="flex flex-row bg-gray-200 dark:bg-coolDark-400 rounded-md px-4 py-3 z-10 max-w-screen-lg mx-auto shadow-md"
         >
           <input
             ref={inputRef}
@@ -92,6 +98,7 @@ const Channel = ({ user = null }) => {
             type="submit"
             disabled={!newMessage}
             className="uppercase font-semibold text-sm tracking-wider text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+            //onClick={scrollToBottom}
           >
             Send
           </button>
