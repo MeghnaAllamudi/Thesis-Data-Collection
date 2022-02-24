@@ -58,7 +58,7 @@ const Channel = ({ user = null }) => {
               <p className="mb-3">Persuasion Data Collection Site</p>
             </div>
             <p className="text-gray-400 text-center">
-              Topic: Should we convert to online learning? 
+              Topic: Is online learning better for students academically? 
             </p>
           </div>
           <ul>
