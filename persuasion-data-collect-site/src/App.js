@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 // Hooks
-import { useAuthState, useDarkMode } from './hooks';
+import useAuthState from './hooks';
 // Components
 import Channel from './components/Channel';
 import Loader from './components/Loader';
@@ -48,13 +48,13 @@ const SunIcon = props => (
 
 function App() {
   const { user, initializing } = useAuthState(firebase.auth());
-  const [darkMode, setDarkMode] = useDarkMode();
+ // const [darkMode, setDarkMode] = useDarkMode();
 
   // const brandLogo = darkMode
   //   ? `${process.env.PUBLIC_URL}/logo_white.svg`
   //   : `${process.env.PUBLIC_URL}/logo.svg`;
 
-  const ThemeIcon = darkMode ? SunIcon : MoonIcon;
+  //const ThemeIcon = darkMode ? SunIcon : MoonIcon;
 
   const signInWithGoogle = async () => {
     // Retrieve Google provider object
@@ -162,10 +162,10 @@ function App() {
               Sign out
             </button>
           ) : null}
-          <ThemeIcon
+          {/* <ThemeIcon
             className="h-8 w-8 cursor-pointer"
             onClick={() => setDarkMode(prev => !prev)}
-          />
+          /> */}
         </div>
       </header>
       <main
