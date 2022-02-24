@@ -40,7 +40,7 @@ const Channel = ({ user = null }) => {
         text: trimmedMessage,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         uid: firebase.auth().currentUser.uid, 
-        displayName: firebase.auth().currentUser.uid
+        displayName: firebase.auth().currentUser.uid.slice(0, 6)
       });
       // Clear input field
       setNewMessage('');
@@ -55,7 +55,7 @@ const Channel = ({ user = null }) => {
         <div className="py-4 max-w-screen-lg mx-auto">
           <div className="border-b dark:border-gray-600 border-gray-200 py-8 mb-4">
             <div className="font-bold text-3xl text-center">
-              <p className="mb-3">Persuasion Data Collection Site</p>
+              <p className="mb-3">Dialogue Data Collection Site</p>
             </div>
             <p className="text-gray-400 text-center">
               Topic: Is online learning better for students academically? 
